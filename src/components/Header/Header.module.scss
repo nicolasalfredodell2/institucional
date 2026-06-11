@@ -9,11 +9,6 @@
   }
 }
 
-.img {
-  height: 190px;
-  object-fit: cover;
-}
-
 .btnLeft {
   left: 4.5vw;
   margin-top: 210px;
@@ -29,14 +24,18 @@
 }
 
 .card {
+  background-color: #fff;
   border: none;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  flex-direction: column;
   height: 242.5px;
   overflow: hidden;
+  position: relative;
 
-  &::after {
+  &:after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -69,6 +68,9 @@
 .imgNew {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  min-height: 190px;
+  max-height: 190px;
+  object-fit: cover;
 }
 
 .blackAndWhite {

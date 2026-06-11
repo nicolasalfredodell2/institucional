@@ -99,7 +99,9 @@ export default function Header() {
                         alt="Imagen de noticia"
                       />
                       <div className={`${styles.card} pointer p-3`} onClick={() => showNotice(item)}>
-                        <small className="text-muted"><small>{item.date}</small></small>
+                        <small className="text-muted">
+                          <small>{item.date}</small>
+                        </small>
                         <small className="my-2" style={{ fontWeight: 500, color: '#34373E' }}>
                           <strong>{item.title}</strong>
                         </small>
