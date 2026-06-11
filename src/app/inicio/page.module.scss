@@ -1,0 +1,140 @@
+.sectionNews {
+  @media screen and (max-width: 770px) {
+    margin-top: 150px !important;
+  }
+}
+
+.roundedPill {
+  background-color: #657187;
+  border: 1px solid #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+
+  &:focus {
+    border: 1px solid #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+  }
+}
+
+.bgParallaxNexts {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 55vh;
+  position: relative;
+
+  @media screen and (max-width: 1150px) {
+    background: none;
+    height: auto;
+  }
+}
+
+.bgOpacity {
+  background-color: #003243;
+  height: 55vh;
+  left: 0;
+  opacity: 0.55;
+  position: absolute;
+  width: 100vw;
+
+  @media screen and (max-width: 1150px) {
+    display: none;
+  }
+}
+
+.calendarCard {
+  border: none !important;
+  height: 25vh;
+}
+
+.cardHeader {
+  background-color: #657187;
+  border-bottom-left-radius: 3px !important;
+  border-top-left-radius: 3px !important;
+  height: 25vh;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 500px) {
+    font-size: 0.9rem;
+  }
+}
+
+.imgDateImportant {
+  height: 25vh;
+  object-fit: cover;
+  width: 100%;
+}
+
+.bgCard {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 25vh;
+  border: none !important;
+  cursor: pointer;
+}
+
+.bgCardPositionTop {
+  background-position: 25% 0% !important;
+}
+
+.bgOpacityCard {
+  background-color: #003243;
+  border-radius: 15px;
+  height: 25vh;
+  opacity: 0.55;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.divH6Data {
+  border-right: solid 2px #657187;
+
+  @media screen and (max-width: 770px) {
+    border-right: none;
+  }
+}
+
+.h6Data {
+  color: #1f2025;
+  font-size: 3rem;
+}
+
+.interestingLink {
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.scrollingContainer {
+  width: 150vw;
+  overflow: hidden;
+
+  @media screen and (max-width: 770px) {
+    width: 100vw;
+  }
+}
+
+.scrollingContent {
+  animation: scrollTicker 30s linear infinite;
+  width: 200vw;
+
+  @media screen and (max-width: 770px) {
+    animation: none;
+    width: 100vw;
+  }
+}
+
+@keyframes scrollTicker {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

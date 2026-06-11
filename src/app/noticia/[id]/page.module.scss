@@ -1,0 +1,72 @@
+.btnBack {
+  background-color: #657187;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.noticeText {
+  font-size: 1.3rem;
+  overflow-wrap: break-word;
+  text-align: justify;
+  word-wrap: break-word;
+}
+
+.blackAndWhite {
+  filter: grayscale(100%);
+}
+
+.imgNotice {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  max-height: 850px;
+  width: 100%;
+}
+
+.maxHeight {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  height: 213.43px;
+  object-fit: cover;
+  width: 100%;
+  cursor: pointer;
+}
+
+.imgDescription {
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.contentZoom {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgZoom {
+  max-height: 95vh;
+  max-width: 90vw;
+}
+
+.buttonClose {
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+  .buttonClose {
+    top: 100px;
+    right: 20px;
+  }
+
+  .noticeText {
+    font-size: 1rem;
+  }
+}

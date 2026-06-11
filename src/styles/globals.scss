@@ -1,0 +1,81 @@
+@use './animations';
+@use './fonts';
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+hr {
+    height: 1.3px;
+}
+
+.card {
+  border-bottom: 1px solid #657187 !important;
+}
+
+.page-item.active .page-link {
+  background-color: #6C757D !important;
+  border-color: #6C757D !important;
+  color: #FFF !important;
+}
+
+.page-link {
+  border-radius: 2.5px !important;
+  color: #6C757D !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.px-custom {
+  padding-left: 6vw !important;
+  padding-right: 6vw !important;
+}
+
+.px-custom-2 {
+  padding-left: 7vw !important;
+  padding-right: 7vw !important;
+}
+
+.rounded {
+  border-radius: 15px !important;
+}
+
+@media screen and (min-width: 1500px) {
+  .px-custom {
+    padding-left: 10vw !important;
+    padding-right: 10vw !important;
+  }
+
+  .px-custom-2 {
+    padding-left: 11vw !important;
+    padding-right: 11vw !important;
+  }
+}
+
+@media screen and (max-width: 3000px) {
+  .margins {
+    margin-top: 325px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .margins {
+      max-width: 1500px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .margins {
+    margin-top: 200px !important;
+  }
+}
+
+.legal-page {
+  p {
+    text-align: justify;
+  }
+}

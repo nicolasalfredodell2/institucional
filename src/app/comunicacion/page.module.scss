@@ -1,0 +1,29 @@
+.cardImg {
+  border-top-left-radius: 2.5px;
+  border-top-right-radius: 2.5px;
+  height: 41.5%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.cardImgCover {
+  object-fit: cover;
+}
+
+.blackAndWhite {
+  filter: grayscale(100%);
+}
+
+.card {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px !important;
+  height: 58.5%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cardContainer {
+  height: 380px;
+  cursor: pointer;
+}

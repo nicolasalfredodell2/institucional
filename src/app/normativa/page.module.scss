@@ -1,0 +1,9 @@
+.listItem {
+  font-size: 1.15rem;
+  padding: 20px !important;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f8f9fa;
+  }
+}

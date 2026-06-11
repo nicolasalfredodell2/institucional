@@ -1,0 +1,62 @@
+.animation-scale:hover {
+    transition: all .5s;
+    transform: scale(1.05);
+}
+
+.fade-in {
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in-down {
+  animation: fadeInDown 1s;
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      transform: translateY(-100px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+    animation: fadeInLeft 1s;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.zoom-in {
+  animation: zoomIn 1s;
+}
+
+@keyframes zoomIn {
+  0% {
+      transform: scale(0.5);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
