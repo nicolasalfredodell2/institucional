@@ -48,7 +48,7 @@ export default function Footer() {
           <div className="col-12 col-md-2 col-lg-2 mt-4 mt-md-0 px-lg-5">
             <p><strong className={styles.subtitleFooter}>PROCESOS</strong></p>
             <Link href="/rendiciones-de-cuentas"><p className="mb-1">Rendiciones de Cuentas</p></Link>
-            <Link href="/cambiar"><p className="mb-1">Juicio de Responsabilidad</p></Link>
+            <Link href="/juicio-de-responsabilidad"><p className="mb-1">Juicio de Responsabilidad</p></Link>
             <Link href="/declaraciones-juradas"><p>Declaraciones Juradas</p></Link>
           </div>
 

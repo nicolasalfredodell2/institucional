@@ -59,7 +59,7 @@ export default function Navbar() {
               <p><a className="nav-link pointer">Procesos <i className="fa-solid fa-sort-down"></i></a></p>
               <ul className={styles.dropdownContent}>
                 <li onClick={() => redirect('/rendiciones-de-cuentas')}><p className="m-0 mb-1"><small>Rendiciones de Cuentas</small></p></li>
-                <li onClick={() => redirect('/cambiar')}><p className="m-0 mb-1"><small>Juicio de Responsabilidad</small></p></li>
+                <li onClick={() => redirect('/juicio-de-responsabilidad')}><p className="m-0 mb-1"><small>Juicio de Responsabilidad</small></p></li>
                 <li onClick={() => redirect('/declaraciones-juradas')}><p className="m-0"><small>Declaraciones Juradas</small></p></li>
               </ul>
             </li>
@@ -107,7 +107,7 @@ export default function Navbar() {
             <hr />
             <p className="my-0 pointer py-0">Procesos</p>
             <p className="mb-0 pointer" onClick={() => redirect('/rendiciones-de-cuentas')} style={{ marginLeft: '25px' }}>Rendiciones de Cuentas</p>
-            <p className="mb-0 pointer" onClick={() => redirect('/cambiar')} style={{ marginLeft: '25px' }}>Juicio de Responsabilidad</p>
+            <p className="mb-0 pointer" onClick={() => redirect('/juicio-de-responsabilidad')} style={{ marginLeft: '25px' }}>Juicio de Responsabilidad</p>
             <p className="mb-0 pointer" onClick={() => redirect('/declaraciones-juradas')} style={{ marginLeft: '25px' }}>Declaraciones Juradas</p>
             <hr />
             <p className="my-0 pointer py-0" onClick={() => redirect('/ubicacion')}>Contacto</p>
