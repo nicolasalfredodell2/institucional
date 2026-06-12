@@ -1,0 +1,45 @@
+.section {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 55vh;
+  padding: 4rem 0;
+}
+
+.logo {
+  margin-bottom: 2rem;
+  width: 210px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #657187;
+  margin-bottom: 2rem;
+  opacity: 1;
+  width: 70px;
+}
+
+.title {
+  color: #003243;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.body {
+  color: #34373E;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin-bottom: 0;
+  max-width: 480px;
+}
+
+.institution {
+  border-top: 1px solid #dee2e6;
+  color: #657187;
+  font-size: 0.82rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+}
