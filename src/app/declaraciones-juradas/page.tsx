@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import styles from './page.module.scss';
 
-type Section = 'one' | 'two' | 'three' | 'four' | 'five' | null;
+type Section = 'one' | 'two' | 'three' | 'four' | 'five';
 
 const subAnexos = [
   { name: 'SUBANEXO I -ART 6 -INGRESO ELECTIVO', path: '/assets/subAnexos/ingresoElectivo.odt' },
@@ -29,10 +29,14 @@ const aplicateNormatives = [
 ];
 
 export default function DeclaracionesJuradasPage() {
-  const [open, setOpen] = useState<Section>(null);
+  const [open, setOpen] = useState<Set<Section>>(new Set());
 
   const toggle = (section: Section) =>
-    setOpen((prev) => (prev === section ? null : section));
+    setOpen((prev) => {
+      const next = new Set(prev);
+      next.has(section) ? next.delete(section) : next.add(section);
+      return next;
+    });
 
   return (
     <section className="fade-in my-5 px-custom row">
@@ -49,15 +53,15 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingOne">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'one' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${!open.has('one') ? 'collapsed' : ''}`}
                   onClick={() => toggle('one')}
-                  aria-expanded={open === 'one'}
+                  aria-expanded={open.has('one')}
                 >
                   <strong>FORMULARIOS DDJJ</strong>
                 </button>
               </h5>
             </div>
-            <div className={`collapse ${open === 'one' ? 'show' : ''}`}>
+            <div className={`${styles.collapseContent} ${open.has('one') ? styles.collapseOpen : ''}`}>
               <div className="card-body">
                 <ul className="list-group" style={{ cursor: 'pointer' }}>
                   {subAnexos.map((item) => (
@@ -79,15 +83,15 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingTwo">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'two' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${!open.has('two') ? 'collapsed' : ''}`}
                   onClick={() => toggle('two')}
-                  aria-expanded={open === 'two'}
+                  aria-expanded={open.has('two')}
                 >
                   <strong>MODELOS DE SOBRES DDJJ</strong>
                 </button>
               </h5>
             </div>
-            <div className={`collapse ${open === 'two' ? 'show' : ''}`}>
+            <div className={`${styles.collapseContent} ${open.has('two') ? styles.collapseOpen : ''}`}>
               <div className="card-body">
                 <ul className="list-group" style={{ cursor: 'pointer' }}>
                   {models.map((item) => (
@@ -109,15 +113,15 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingThree">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'three' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${!open.has('three') ? 'collapsed' : ''}`}
                   onClick={() => toggle('three')}
-                  aria-expanded={open === 'three'}
+                  aria-expanded={open.has('three')}
                 >
                   <strong>NORMATIVA APLICABLE</strong>
                 </button>
               </h5>
             </div>
-            <div className={`collapse ${open === 'three' ? 'show' : ''}`}>
+            <div className={`${styles.collapseContent} ${open.has('three') ? styles.collapseOpen : ''}`}>
               <div className="card-body">
                 <p className="mb-4">
                   El régimen de presentación de Declaraciones Juradas de Bienes e Ingresos para los sujetos obligados se halla regulado por las normas constitucionales, legales y reglamentarias que se consignan a continuación, las cuales pueden ser descargadas para su consulta:
@@ -161,15 +165,15 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingFour">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'four' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${!open.has('four') ? 'collapsed' : ''}`}
                   onClick={() => toggle('four')}
-                  aria-expanded={open === 'four'}
+                  aria-expanded={open.has('four')}
                 >
                   <strong>INSTRUCCIONES</strong>
                 </button>
               </h5>
             </div>
-            <div className={`collapse ${open === 'four' ? 'show' : ''}`}>
+            <div className={`${styles.collapseContent} ${open.has('four') ? styles.collapseOpen : ''}`}>
               <div className="card-body">
                 <p className="mb-4">
                   <strong>*</strong> El sobre conteniendo en su interior la DJ debe ser presentado en el Tribunal de Cuentas de Río Negro (calle Moreno 263 de Viedma) sano y debidamente cerrado.
@@ -206,15 +210,15 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingFive">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'five' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${!open.has('five') ? 'collapsed' : ''}`}
                   onClick={() => toggle('five')}
-                  aria-expanded={open === 'five'}
+                  aria-expanded={open.has('five')}
                 >
                   <strong>PREGUNTAS FRECUENTES - CONSULTAS</strong>
                 </button>
               </h5>
             </div>
-            <div className={`collapse ${open === 'five' ? 'show' : ''}`}>
+            <div className={`${styles.collapseContent} ${open.has('five') ? styles.collapseOpen : ''}`}>
               <div className="card-body">
                 <p className="mb-4">
                   <strong>¿CUÁNDO LOS SUJETOS COMPRENDIDOS EN EL ART. 7 DE LA LEY L Nº 3550 DEBEN PRESENTAR DECLARACIÓN JURADA DE BIENES E INGRESOS?</strong>
