@@ -53,7 +53,7 @@ export default function NoticiaPage() {
             <strong>{notice.title}</strong>
           </h4>
 
-          <p>{notice.date}</p>
+          <p style={{ fontSize: '20px' }}>{notice.date}</p>
 
           <div className="d-flex justify-content-center my-3 row">
             <div className="col-12">
