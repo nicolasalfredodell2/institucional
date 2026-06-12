@@ -26,14 +26,14 @@
 .card {
   background-color: #fff;
   border: none;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+  border-radius: 5px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   display: flex;
   flex-direction: column;
   height: 242.5px;
   overflow: hidden;
   position: relative;
+  border-bottom: 1px solid #657187 !important;
 
   &:after {
     content: "";
