@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import styles from './page.module.scss';
 
 type Section = 'one' | 'two' | 'three' | 'four' | 'five' | null;
 
@@ -48,7 +49,7 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingOne">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${open !== 'one' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'one' ? 'collapsed' : ''}`}
                   onClick={() => toggle('one')}
                   aria-expanded={open === 'one'}
                 >
@@ -78,7 +79,7 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingTwo">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${open !== 'two' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'two' ? 'collapsed' : ''}`}
                   onClick={() => toggle('two')}
                   aria-expanded={open === 'two'}
                 >
@@ -108,7 +109,7 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingThree">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${open !== 'three' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'three' ? 'collapsed' : ''}`}
                   onClick={() => toggle('three')}
                   aria-expanded={open === 'three'}
                 >
@@ -160,7 +161,7 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingFour">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${open !== 'four' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'four' ? 'collapsed' : ''}`}
                   onClick={() => toggle('four')}
                   aria-expanded={open === 'four'}
                 >
@@ -205,7 +206,7 @@ export default function DeclaracionesJuradasPage() {
             <div className="card-header" id="headingFive">
               <h5 className="mb-0">
                 <button
-                  className={`btn btn-link ${open !== 'five' ? 'collapsed' : ''}`}
+                  className={`btn btn-link ${styles.accordionBtn} ${open !== 'five' ? 'collapsed' : ''}`}
                   onClick={() => toggle('five')}
                   aria-expanded={open === 'five'}
                 >
