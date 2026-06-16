@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(git add src/app/not-found.tsx)",
+      "PowerShell(git push origin main)",
+      "PowerShell(git add src/app/declaraciones-juradas/page.tsx)"
+    ]
+  }
+}
