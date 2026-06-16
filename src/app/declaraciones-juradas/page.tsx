@@ -50,12 +50,12 @@ export default function DeclaracionesJuradasPage() {
         <div id="accordion">
           {/* FORMULARIOS DDJJ */}
           <div className="card">
-            <div className="card-header" id="headingOne">
+            <div className="card-header" id="headingOne" onClick={() => toggle('one')} style={{ cursor: 'pointer' }}>
               <h5 className="mb-0">
                 <button
                   className={`btn btn-link ${styles.accordionBtn} ${!open.has('one') ? 'collapsed' : ''}`}
-                  onClick={() => toggle('one')}
                   aria-expanded={open.has('one')}
+                  tabIndex={-1}
                 >
                   <strong>FORMULARIOS DDJJ</strong>
                 </button>
@@ -80,12 +80,12 @@ export default function DeclaracionesJuradasPage() {
 
           {/* MODELOS DE SOBRES DDJJ */}
           <div className="card">
-            <div className="card-header" id="headingTwo">
+            <div className="card-header" id="headingTwo" onClick={() => toggle('two')} style={{ cursor: 'pointer' }}>
               <h5 className="mb-0">
                 <button
                   className={`btn btn-link ${styles.accordionBtn} ${!open.has('two') ? 'collapsed' : ''}`}
-                  onClick={() => toggle('two')}
                   aria-expanded={open.has('two')}
+                  tabIndex={-1}
                 >
                   <strong>MODELOS DE SOBRES DDJJ</strong>
                 </button>
@@ -110,12 +110,12 @@ export default function DeclaracionesJuradasPage() {
 
           {/* NORMATIVA APLICABLE */}
           <div className="card">
-            <div className="card-header" id="headingThree">
+            <div className="card-header" id="headingThree" onClick={() => toggle('three')} style={{ cursor: 'pointer' }}>
               <h5 className="mb-0">
                 <button
                   className={`btn btn-link ${styles.accordionBtn} ${!open.has('three') ? 'collapsed' : ''}`}
-                  onClick={() => toggle('three')}
                   aria-expanded={open.has('three')}
+                  tabIndex={-1}
                 >
                   <strong>NORMATIVA APLICABLE</strong>
                 </button>
@@ -162,12 +162,12 @@ export default function DeclaracionesJuradasPage() {
 
           {/* INSTRUCCIONES */}
           <div className="card">
-            <div className="card-header" id="headingFour">
+            <div className="card-header" id="headingFour" onClick={() => toggle('four')} style={{ cursor: 'pointer' }}>
               <h5 className="mb-0">
                 <button
                   className={`btn btn-link ${styles.accordionBtn} ${!open.has('four') ? 'collapsed' : ''}`}
-                  onClick={() => toggle('four')}
                   aria-expanded={open.has('four')}
+                  tabIndex={-1}
                 >
                   <strong>INSTRUCCIONES</strong>
                 </button>
@@ -207,12 +207,12 @@ export default function DeclaracionesJuradasPage() {
 
           {/* PREGUNTAS FRECUENTES */}
           <div className="card">
-            <div className="card-header" id="headingFive">
+            <div className="card-header" id="headingFive" onClick={() => toggle('five')} style={{ cursor: 'pointer' }}>
               <h5 className="mb-0">
                 <button
                   className={`btn btn-link ${styles.accordionBtn} ${!open.has('five') ? 'collapsed' : ''}`}
-                  onClick={() => toggle('five')}
                   aria-expanded={open.has('five')}
+                  tabIndex={-1}
                 >
                   <strong>PREGUNTAS FRECUENTES - CONSULTAS</strong>
                 </button>
