@@ -2,42 +2,27 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { NEWS_API_URL, formatLongDate, type ApiNewsItem } from '@/lib/news';
 import styles from './Header.module.scss';
 
 interface NewsItem {
   date: string;
   description: string;
-  id: string | number;
+  id: string;
+  slug: string;
   img: string;
   title: string;
   isWithFilterWhiteAndBlack?: boolean;
 }
 
-interface ApiNewsItem {
-  id: string;
-  title: string;
-  dateISO: string;
-  summary: string;
-  coverImage: string;
-  grayscale: boolean;
-}
-
-const NEWS_API_URL = 'http://192.168.200.242:8090/api/v1/news';
 const HEADER_NEWS_COUNT = 7;
-
-function formatLongDate(dateISO: string) {
-  const date = new Date(`${dateISO}T00:00:00`);
-  const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-  const weekday = capitalize(date.toLocaleDateString('es-AR', { weekday: 'long' }));
-  const month = capitalize(date.toLocaleDateString('es-AR', { month: 'long' }));
-  return `${weekday} ${date.getDate()} de ${month} del ${date.getFullYear()}`;
-}
 
 function mapApiNews(item: ApiNewsItem): NewsItem {
   return {
     date: formatLongDate(item.dateISO),
     description: item.summary,
     id: item.id,
+    slug: item.slug,
     img: item.coverImage,
     title: item.title,
     isWithFilterWhiteAndBlack: item.grayscale,
@@ -81,7 +66,7 @@ export default function Header() {
   };
 
   const showNotice = (notice: NewsItem) => {
-    router.push(`/noticia/${notice.id}`);
+    router.push(`/noticia/${notice.slug}`);
   };
 
   return (

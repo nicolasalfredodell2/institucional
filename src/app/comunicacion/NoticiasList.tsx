@@ -2,38 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { NEWS_API_URL, formatDate, type ApiNewsItem, type ApiNewsListResponse } from '@/lib/news';
 import styles from './page.module.scss';
 
-const API_URL = 'http://192.168.200.242:8090/api/v1/news';
 const PER_PAGE = 12;
 
-interface ApiNewsItem {
-  id: string;
-  slug: string;
-  title: string;
-  dateISO: string;
-  summary: string;
-  body: string[];
-  coverImage: string;
-  coverImageActive: boolean;
-  grayscale: boolean;
-  listedInComunicaciones: boolean;
-}
-
-interface ApiNewsResponse {
-  data: ApiNewsItem[];
-  meta: {
-    next_cursor: string | null;
-  };
-}
-
-function formatDate(dateISO: string) {
-  const [year, month, day] = dateISO.split('-');
-  return `${day}/${month}/${year}`;
-}
-
-async function fetchNews(cursor: string | null): Promise<ApiNewsResponse> {
-  const url = new URL(API_URL);
+async function fetchNews(cursor: string | null): Promise<ApiNewsListResponse> {
+  const url = new URL(NEWS_API_URL);
   url.searchParams.set('per_page', String(PER_PAGE));
   if (cursor) url.searchParams.set('cursor', cursor);
 
@@ -92,7 +67,7 @@ export default function NoticiasList() {
         {notices.map((notice) => (
           <Link
             key={notice.id}
-            href={`/noticia/${notice.id}`}
+            href={`/noticia/${notice.slug}`}
             className={`${styles.cardContainer} col-12 col-md-6 col-lg-4 col-xl-3 mb-4`}
             style={{ textDecoration: 'none' }}
           >
