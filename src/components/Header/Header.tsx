@@ -13,15 +13,36 @@ interface NewsItem {
   isWithFilterWhiteAndBlack?: boolean;
 }
 
-const NEWS: NewsItem[] = [
-  { date: 'Viernes 5 de Junio del 2026', description: 'Los vocales del Tribunal de Cuentas de Río Negro, Maximiliano Suárez y Natalia Falugi, participaron en Catamarca de la Segunda Reunión Anual del Secretariado Permanente de Tribunales de Cuentas de la República Argentina y de la Tercera Reunión de la Asociación de Entidades Oficiales de Control Público del Mercosur (ASUR), en representación de la provincia.', id: '74', img: 'assets/img/comunication/comunication71.jpeg', title: 'Representantes de Río Negro participaron de la reunión nacional del Secretariado Permanente de Tribunales de Cuenta' },
-  { date: 'Miercoles 3 de Junio del 2026', description: 'El Tribunal de Cuentas de la Provincia de Río Negro remitió a la Legislatura Provincial la Memoria Institucional correspondiente al ejercicio 2025, documento que reúne las principales acciones, actividades y resultados desarrollados por el organismo durante el último año.', id: '73', img: 'assets/img/comunication/comunication70.webp', title: 'El Tribunal de Cuentas elevó a la Legislatura la Memoria Institucional 2025' },
-  { date: 'Lunes 11 de Mayo del 2026', description: 'El Tribunal de Cuentas de Río Negro llevó adelante tareas de control vinculadas al seguimiento de vacunas remitidas por el Estado Nacional, en el marco del Plan Anual de Auditorías Especiales que desarrolla el organismo.', id: 72, img: 'assets/img/comunication/comunication69.jpg', title: 'El Tribunal de Cuentas verifica el uso de vacunas y programas nacionales en la provincia' },
-  { date: 'Lunes 27 de Abril del 2026', description: 'El Tribunal de Cuentas de la Provincia de Río Negro llevó adelante auditorías en las empresas públicas Alta Tecnología Sociedad Anónima Unipersonal (ALTEC S.A.U.) y Empresa Forestal Rionegrina Sociedad Anónima (EMFORSA), ambas con sede en la ciudad de San Carlos de Bariloche.', id: 71, img: 'assets/img/comunication/comunication68.png', title: 'Auditorías en empresas públicas de Río Negro' },
-  { date: 'Jueves 16 de Abril del 2026', description: 'El Tribunal de Cuentas de la Provincia de Río Negro participa de la I Reunión Anual 2026 del Secretariado Permanente de Tribunales de Cuentas de la República Argentina, que se desarrolla los días 15, 16 y 17 de abril en la sede de la Sindicatura General de la Nación (SIGEN), en la Ciudad Autónoma de Buenos Aires.', id: 70, img: 'assets/img/comunication/comunication67.png', title: 'Río Negro presente en el encuentro federal de organismos de control público' },
-  { date: 'Lunes 16 de Marzo del 2026', description: 'El Tribunal de Cuentas de la Provincia de Río Negro suscribió un convenio con el Registro Nacional de las Personas (RENAPER) que permitirá incorporar a los sistemas institucionales los servicios del Sistema de Identidad Digital (SID) para la validación de identidad de personas.', id: '69', img: 'assets/img/comunication/comunication66.png', title: 'El Tribunal de Cuentas firmó un convenio con RENAPER para incorporar servicios de validación de identidad digital' },
-  { date: 'Jueves 12 de Marzo del 2026', description: 'En el marco de la Planificación Anual de Auditorías, el área de Auditorías Especiales del Tribunal de Cuentas de la Provincia de Río Negro se encuentra realizando tareas de control en las ciudades de Río Colorado y General Roca, vinculadas al Programa Nacional de Agregado de Valor para Cooperativas Agroindustriales (CoopAR).', id: '68', img: 'assets/img/comunication/comunication65.png', title: 'Control del Tribunal de Cuentas sobre proyectos del programa CoopAR en la provincia' },
-];
+interface ApiNewsItem {
+  id: string;
+  title: string;
+  dateISO: string;
+  summary: string;
+  coverImage: string;
+  grayscale: boolean;
+}
+
+const NEWS_API_URL = 'http://192.168.200.242:8090/api/v1/news';
+const HEADER_NEWS_COUNT = 7;
+
+function formatLongDate(dateISO: string) {
+  const date = new Date(`${dateISO}T00:00:00`);
+  const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+  const weekday = capitalize(date.toLocaleDateString('es-AR', { weekday: 'long' }));
+  const month = capitalize(date.toLocaleDateString('es-AR', { month: 'long' }));
+  return `${weekday} ${date.getDate()} de ${month} del ${date.getFullYear()}`;
+}
+
+function mapApiNews(item: ApiNewsItem): NewsItem {
+  return {
+    date: formatLongDate(item.dateISO),
+    description: item.summary,
+    id: item.id,
+    img: item.coverImage,
+    title: item.title,
+    isWithFilterWhiteAndBlack: item.grayscale,
+  };
+}
 
 export default function Header() {
   const pathname = usePathname();
@@ -33,11 +54,22 @@ export default function Header() {
 
   const [pathBackground, setPathBackground] = useState<string>('');
   const [hasAddCenter, setHasAddCenter] = useState(false);
+  const [news, setNews] = useState<NewsItem[]>([]);
 
   useEffect(() => {
     const n = Math.floor(Math.random() * 5) + 1;
     setPathBackground(`/assets/img/header/${n}.jpg`);
     setHasAddCenter(n !== 1 && n !== 6);
+  }, []);
+
+  useEffect(() => {
+    const url = new URL(NEWS_API_URL);
+    url.searchParams.set('per_page', String(HEADER_NEWS_COUNT));
+
+    fetch(url.toString())
+      .then((res) => res.json())
+      .then((json: { data: ApiNewsItem[] }) => setNews(json.data.map(mapApiNews)))
+      .catch(() => setNews([]));
   }, []);
 
   const scrollRight = () => {
@@ -90,10 +122,10 @@ export default function Header() {
                 </div>
 
                 <div className={`px-2 row ${styles.contentNews}`}>
-                  {NEWS.map((item) => (
+                  {news.map((item) => (
                     <div key={item.id} className={styles.new}>
                       <img
-                        src={`/${item.img}`}
+                        src={item.img}
                         onClick={() => showNotice(item)}
                         className={`${styles.imgNew} pointer w-100 ${item.isWithFilterWhiteAndBlack ? styles.blackAndWhite : ''}`}
                         alt="Imagen de noticia"
