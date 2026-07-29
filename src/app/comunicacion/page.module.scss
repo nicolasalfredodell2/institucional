@@ -27,3 +27,16 @@
   height: 380px;
   cursor: pointer;
 }
+
+.btnLoadMore {
+  background-color: #657187;
+  border: none;
+  color: #fff;
+  padding: 10px 24px;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+}
