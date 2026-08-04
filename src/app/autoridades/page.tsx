@@ -1,15 +1,9 @@
 import type { Metadata } from 'next';
-import styles from './page.module.scss';
+import AuthoritiesList from './AuthoritiesList';
 
 export const metadata: Metadata = {
   title: 'Autoridades | Tribunal de Cuentas de Río Negro',
 };
-
-const authorities = [
-  { img: '/assets/img/authorities/vocal3-new-ia.jpeg', job: 'Presidente', name: 'Dr. Julio Fernando Ortiz' },
-  { img: '/assets/img/authorities/vocal2.jpg', job: 'Vicepresidente Primero', name: 'Cr. Maximiliano Felipe Suarez', isGordini: false },
-  { img: '/assets/img/authorities/vocal1.jpeg', job: 'Vicepresidente Segundo', name: 'Dra. Natalia Falugi', isGordini: true },
-];
 
 export default function AutoridadesPage() {
   return (
@@ -31,25 +25,7 @@ export default function AutoridadesPage() {
           En ese mismo acto se dispuso la distribución de las áreas de supervisión entre los vocales, conforme al Reglamento Interno del organismo, como parte del funcionamiento institucional regular del Tribunal.
         </p>
 
-        <div className="d-flex justify-content-center my-5 py-1 row">
-          {authorities.map((auth, i) => (
-            <div key={i} className="col-12 col-md-6 col-lg-4">
-              <div className="d-flex justify-content-center row">
-                <div className="col-12 order-0 text-center">
-                  <img
-                    src={auth.img}
-                    alt={auth.name}
-                    className={`${styles.authImg} ${auth.isGordini ? styles.coverImage : ''}`}
-                  />
-                </div>
-                <div className="col-12 col-md-7 d-flex flex-column justify-content-center mt-3 mx-5 text-center">
-                  <p className="mb-0 subtitle"><strong>{auth.job}</strong></p>
-                  <p><small>{auth.name}</small></p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <AuthoritiesList />
 
         <div className="d-flex justify-content-center my-5 py-5 row">
           <div className="col-12">
