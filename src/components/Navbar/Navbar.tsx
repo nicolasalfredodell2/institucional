@@ -67,14 +67,6 @@ export default function Navbar() {
             <li className="align-items-center d-none d-lg-flex nav-item">
               <p><Link className="nav-link" href="/ubicacion">Contacto</Link></p>
             </li>
-
-            <li className="align-items-center d-none d-lg-flex nav-item">
-              <p>
-                <a className="nav-link" href="https://intranet.tribcuentasrionegro.gov.ar/institucional" target="_blank" rel="noopener noreferrer">
-                  Iniciar sesion
-                </a>
-              </p>
-            </li>
           </ul>
         </nav>
       </div>
@@ -111,12 +103,6 @@ export default function Navbar() {
             <p className="mb-0 pointer" onClick={() => redirect('/declaraciones-juradas')} style={{ marginLeft: '25px' }}>Declaraciones Juradas</p>
             <hr />
             <p className="my-0 pointer py-0" onClick={() => redirect('/ubicacion')}>Contacto</p>
-            <hr />
-            <p className="my-0 pointer py-0">
-              <a className="m-0 nav-link p-0" href="https://intranet.tribcuentasrionegro.gov.ar/institucional" target="_blank" rel="noopener noreferrer">
-                Iniciar sesión
-              </a>
-            </p>
             <hr />
             <p className="my-0 pointer py-0" onClick={() => setIsSidebarOpen(false)}><strong>Cerrar</strong></p>
           </div>
