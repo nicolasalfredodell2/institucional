@@ -12,7 +12,7 @@ export default function AuthoritiesList() {
   useEffect(() => {
     fetch(AUTHORITIES_API_URL)
       .then((res) => res.json())
-      .then((json: ApiAuthoritiesResponse) => setAuthorities(json.data))
+      .then((json: ApiAuthoritiesResponse) => setAuthorities(json.data ?? []))
       .catch(() => setAuthorities([]));
   }, []);
 
