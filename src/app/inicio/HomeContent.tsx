@@ -5,13 +5,6 @@ import Link from 'next/link';
 import { HOME_API_URL, EMPTY_HOME_DATA, resolveLinkUrl, type ApiHomeData, type ApiHomeResponse } from '@/lib/home';
 import styles from './page.module.scss';
 
-const itemsCifras = [
-  { title: '1994', description: 'Año de creación del Tribunal de Cuentas de Río Negro' },
-  { title: '21', description: 'Expedientes resueltos con decisorio firme' },
-  { title: '830', description: 'Notificaciones electrónicas' },
-  { title: '241', description: 'Providencias' },
-];
-
 const links = [
   { title: 'Red Federal de Control Público', url: 'https://www.redfederal.gob.ar/' },
   { title: 'Sindicatura General de la Nación', url: 'https://www.argentina.gob.ar/sigen' },
@@ -146,10 +139,10 @@ export default function HomeContent() {
 
           <div className="col-12">
             <div className="my-5 row">
-              {itemsCifras.map((item, i) => (
+              {home.cifrasInstitucionales.map((item, i) => (
                 <div
                   key={i}
-                  className={`col-12 col-md-3 py-2 ${i < itemsCifras.length - 1 ? styles.divH6Data : ''}`}
+                  className={`col-12 col-md-3 py-2 ${i < home.cifrasInstitucionales.length - 1 ? styles.divH6Data : ''}`}
                 >
                   <h6 className={`h6 ${styles.h6Data}`}>{item.title}</h6>
                   <p>{item.description}</p>
