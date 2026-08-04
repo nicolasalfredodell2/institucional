@@ -2,26 +2,23 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { NEWS_API_URL, formatLongDate, type ApiNewsItem } from '@/lib/news';
+import { formatLongDate, type ApiNewsItem } from '@/lib/news';
+import { HOME_API_URL, type ApiHomeResponse } from '@/lib/home';
 import styles from './Header.module.scss';
 
 interface NewsItem {
   date: string;
   description: string;
-  id: string;
   slug: string;
   img: string;
   title: string;
   isWithFilterWhiteAndBlack?: boolean;
 }
 
-const HEADER_NEWS_COUNT = 7;
-
 function mapApiNews(item: ApiNewsItem): NewsItem {
   return {
     date: formatLongDate(item.dateISO),
     description: item.summary,
-    id: item.id,
     slug: item.slug,
     img: item.coverImage,
     title: item.title,
@@ -48,12 +45,9 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const url = new URL(NEWS_API_URL);
-    url.searchParams.set('per_page', String(HEADER_NEWS_COUNT));
-
-    fetch(url.toString())
+    fetch(HOME_API_URL)
       .then((res) => res.json())
-      .then((json: { data: ApiNewsItem[] }) => setNews(json.data.map(mapApiNews)))
+      .then((json: ApiHomeResponse) => setNews((json.data?.news ?? []).map(mapApiNews)))
       .catch(() => setNews([]));
   }, []);
 
@@ -108,7 +102,7 @@ export default function Header() {
 
                 <div className={`px-2 row ${styles.contentNews}`}>
                   {news.map((item) => (
-                    <div key={item.id} className={styles.new}>
+                    <div key={item.slug} className={styles.new}>
                       <img
                         src={item.img}
                         onClick={() => showNotice(item)}
