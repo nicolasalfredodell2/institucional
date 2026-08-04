@@ -5,12 +5,6 @@ import Link from 'next/link';
 import { HOME_API_URL, EMPTY_HOME_DATA, resolveLinkUrl, type ApiHomeData, type ApiHomeResponse } from '@/lib/home';
 import styles from './page.module.scss';
 
-const datesCalendar = [
-  { bg: '/assets/img/calendar/30nuevo.jpg', dateDay: '', dateMonth: 'FEB', description: 'Conmemoración del 30° Aniversario' },
-  { bg: '/assets/img/calendar/memoria.jpg', dateDay: '', dateMonth: 'MAR', description: 'Elaboración de la Memoria Anual' },
-  { bg: '/assets/img/calendar/reunion.jpg', dateDay: '', dateMonth: 'ABR', description: 'I Reunión Secretariado Permanente de Tribunales de Cuentas' },
-];
-
 const itemsCifras = [
   { title: '1994', description: 'Año de creación del Tribunal de Cuentas de Río Negro' },
   { title: '21', description: 'Expedientes resueltos con decisorio firme' },
@@ -64,27 +58,27 @@ export default function HomeContent() {
         >
           <div className={styles.bgOpacity} />
 
-          {datesCalendar.map((item, i) => (
+          {home.agendaEfemerides.map((item, i) => (
             <div key={i} className="col-12 col-md-6 col-lg-4 mb-2 mb-md-0 p-md-4">
               <div className={`card row ${styles.calendarCard}`}>
                 <div className="col-2 p-0">
                   <h5 className={`${styles.cardHeader} rounded-0 text-white`}>
                     <strong>
-                      {item.dateDay}
-                      {item.dateDay && <br />}
-                      {item.dateMonth}
+                      {item.day}
+                      {item.day && <br />}
+                      {item.month}
                     </strong>
                   </h5>
                 </div>
 
                 <div className="col-2 p-0">
-                  <img src={item.bg} alt="Imagen día importante" className={styles.imgDateImportant} />
+                  <img src={item.image ?? ''} alt="Imagen día importante" className={styles.imgDateImportant} />
                 </div>
 
                 <div className="col-8 m-auto px-lg-2">
                   <div className="row">
                     <div className="col-12 text-center">
-                      <small className="card-title font-weight-light">{item.description}</small>
+                      <small className="card-title font-weight-light">{item.summary}</small>
                     </div>
                   </div>
                 </div>
