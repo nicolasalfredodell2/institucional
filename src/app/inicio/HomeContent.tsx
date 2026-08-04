@@ -5,15 +5,6 @@ import Link from 'next/link';
 import { HOME_API_URL, EMPTY_HOME_DATA, resolveLinkUrl, type ApiHomeData, type ApiHomeResponse } from '@/lib/home';
 import styles from './page.module.scss';
 
-const links = [
-  { title: 'Red Federal de Control Público', url: 'https://www.redfederal.gob.ar/' },
-  { title: 'Sindicatura General de la Nación', url: 'https://www.argentina.gob.ar/sigen' },
-  { title: 'Secretariado Permanente de Tribunales de Cuentas, Órganos y Organismos Públicos de Control Externo de la República Argentina', url: 'https://tribunalesdecuentas.org.ar/' },
-  { title: 'Auditoría General de la Nación', url: 'https://www.agn.gob.ar/' },
-  { title: 'Defensoría del Pueblo de Río Negro', url: 'https://defensoriarionegro.gov.ar/' },
-  { title: 'Fiscalía de Investigaciones', url: 'http://fia.rionegro.gov.ar/' },
-];
-
 export default function HomeContent() {
   const [home, setHome] = useState<ApiHomeData>(EMPTY_HOME_DATA);
 
@@ -156,17 +147,17 @@ export default function HomeContent() {
       {/* Barra de links con scroll automático */}
       <section className={`bg-danger col-12 mt-5 ${styles.scrollingContainer}`}>
         <div className={`row ${styles.scrollingContent}`}>
-          {links.map((link, i) => (
+          {home.enlacesInstitucionales.map((link, i) => (
             <a
               key={i}
-              href={link.url}
+              href={resolveLinkUrl(link.url) ?? undefined}
               target="_blank"
               rel="noopener noreferrer"
               className="align-items-center border col-12 col-md-4 col-xl-2 d-flex justify-content-center p-3 text-center"
               style={{ backgroundColor: '#657187', textDecoration: 'none' }}
             >
               <span className={`${styles.interestingLink} text-white`}>
-                {link.title.toUpperCase()}
+                {link.label.toUpperCase()}
               </span>
             </a>
           ))}
