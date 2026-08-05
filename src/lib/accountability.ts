@@ -1,4 +1,4 @@
-export const ACCOUNTABILITY_BULLETINS_API_URL = 'http://192.168.200.242:8090/api/v1/accountability-bulletins';
+export const ACCOUNTABILITY_BULLETINS_API_URL = 'http://192.168.42.25:8033/api/v1/accountability-bulletins';
 
 export interface ApiBulletin {
   title: string;

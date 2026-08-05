@@ -1,4 +1,4 @@
-export const DOCUMENTS_API_URL = 'http://192.168.200.242:8090/api/v1/documents';
+export const DOCUMENTS_API_URL = 'http://192.168.42.25:8033/api/v1/documents';
 
 export interface ApiDocument {
   name: string;
